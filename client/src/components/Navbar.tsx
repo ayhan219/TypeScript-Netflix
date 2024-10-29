@@ -22,7 +22,7 @@ const Navbar = (props: Props) => {
   }, []);
 
   return (
-    <div className="w-full h-36 bg-black flex justify-center items-center relative">
+    <div className="w-full h-36  flex justify-center items-center relative">
       <div className="w-[85%] h-full flex items-center ">
         <div className="flex items-center w-[70%] gap-16">
           <div>
@@ -32,7 +32,7 @@ const Navbar = (props: Props) => {
               alt="Logo"
             />
           </div>
-          <div className="text-[#A8B0B5] font-bold hidden lg:flex gap-7 text-base">
+          <div className="text-white font-bold hidden lg:flex gap-7 text-base">
             <a href="" className="cursor-pointer">
               Home
             </a>
@@ -55,7 +55,7 @@ const Navbar = (props: Props) => {
         </div>
         <div className="w-full lg:w-[20%]">
           {!isSmallScreen ? (
-            <div className="text-[#A8B0B5] flex justify-end gap-10 items-center">
+            <div className="text-white flex justify-end gap-10 items-center">
               <div className="flex text-3xl gap-7">
                 <FaSearch className="cursor-pointer" />
                 <FaBell className="cursor-pointer" />
@@ -77,8 +77,8 @@ const Navbar = (props: Props) => {
         </div>
       </div>
       {
-        isHamburgerOpen && <div className="w-full h-80 bg-black absolute top-36">
-            <div className="text-[#A8B0B5] font-bold flex flex-col gap-7 text-base pl-5">
+        isHamburgerOpen && <div className="w-full h-80  absolute top-36">
+            <div className="text-white font-bold flex flex-col gap-7 text-base pl-5">
             <a href="" className="cursor-pointer">
               Home
             </a>
