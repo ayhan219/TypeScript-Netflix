@@ -49,8 +49,8 @@ const UpCommingMovies = () => {
         }
       };
     return (
-        <div className="w-full h-[40vh] bg-black flex flex-col items-center pt-16">
-          <div className="w-full h-auto p-8 pl-24 text-white">
+        <div className="w-full h-[50vh] bg-black flex flex-col items-center pt-16">
+          <div className="w-full h-auto p-4 pl-24 text-white">
             <h2 className="text-2xl font-bold">Upcomming</h2>
           </div>
           <div className="relative w-[90%] h-80 flex items-center overflow-hidden">
