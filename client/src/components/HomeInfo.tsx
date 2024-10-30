@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { IoIosInformationCircle } from "react-icons/io";
-import headerImage from "../assets/venom.jpg"
 import axios from "axios";
 import venompng from "../assets/pngvenom.png"
 
 interface Movie {
-  poster_path: string;
+  backdrop_path: string;
   overview: string;
 }
 
@@ -31,7 +30,7 @@ const HomeInfo = () => {
     <div className="relative w-full h-[65rem]">
       <img
         className="absolute inset-0 w-full h-full object-cover"
-        src={headerImage}
+        src={`https://image.tmdb.org/t/p/original/${popularMovies[0]?.backdrop_path}`}
         alt="Background"
       />
 
