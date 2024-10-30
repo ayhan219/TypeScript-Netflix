@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar';
 import HomeInfo from '../components/HomeInfo';
 import PopularMovies from '../components/PopularMovies';
+import NowPlayingMovies from '../components/NowPlayingMovies';
 
 
 
@@ -17,6 +18,7 @@ const Home = (props: Props) => {
       </div>
       <HomeInfo />
       <PopularMovies />
+      <NowPlayingMovies />
     </div>
     
     </>
