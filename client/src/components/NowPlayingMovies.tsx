@@ -27,7 +27,6 @@ const NowPlayingMovies = () => {
               }
             );
             setNowPlaying(response.data.results)
-            console.log(response.data.results);
             
           } catch (error) {
             console.log(error);
@@ -49,7 +48,7 @@ const NowPlayingMovies = () => {
         }
       };
     return (
-        <div className="w-full h-[40vh] bg-black flex flex-col items-center">
+        <div className="w-full h-[40vh] bg-black flex flex-col items-center pt-16">
           <div className="w-full h-auto p-8 pl-24 text-white">
             <h2 className="text-2xl font-bold">Now Playing</h2>
           </div>
