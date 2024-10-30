@@ -22,7 +22,7 @@ const Navbar = (props: Props) => {
   }, []);
 
   return (
-    <div className="w-full h-36  flex justify-center items-center relative">
+    <div className="w-full bg-black h-36  flex justify-center items-center relative">
       <div className="w-[85%] h-full flex items-center ">
         <div className="flex items-center w-[70%] gap-16">
           <div>
