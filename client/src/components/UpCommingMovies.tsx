@@ -23,7 +23,7 @@ const UpCommingMovies = () => {
               {
                 headers: {
                   accept: "application/json",
-                  Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${token.token}`,
                 },
               }
             );

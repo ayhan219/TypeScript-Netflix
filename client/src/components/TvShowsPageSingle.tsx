@@ -11,7 +11,7 @@ type TvShowsProps = {
 
 const TvShowsPageSingle = ({item}:TvShowsProps) => {
   return (
-    <div className='w-72 h-96 border-2'>
+    <div className='w-72 h-96 border-2 solid border-gray-800'>
                     <div>
                         <img className='w-full h-52 object-center object-cover' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                     </div>

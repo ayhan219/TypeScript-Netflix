@@ -33,7 +33,7 @@ const Navbar = (props: Props) => {
             />
           </div>
           <div className="text-white font-bold hidden lg:flex gap-7 text-base">
-            <a href="" className="cursor-pointer">
+            <a href="/" className="cursor-pointer">
               Home
             </a>
             <a href="/tvshows" className="cursor-pointer">
