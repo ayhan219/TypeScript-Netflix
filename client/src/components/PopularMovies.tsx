@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import PopularMovieSingle from "./PopularMovieSingle";
 import axios from "axios";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import token from "../token"
 
 type Item = {
   poster_path: string;
@@ -20,7 +21,7 @@ const PopularMovies = () => {
           {
             headers: {
               accept: "application/json",
-              Authorization: "Bearer YOUR_TOKEN",
+              Authorization: `Bearer ${token}`,
             },
           }
         );

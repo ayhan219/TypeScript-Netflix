@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import PopularMovieSingle from "./PopularMovieSingle";
 import axios from "axios";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import token from "../token"
 
 
 type Item = {
@@ -22,7 +23,7 @@ const NowPlayingMovies = () => {
               {
                 headers: {
                   accept: "application/json",
-                  Authorization: "Bearer token",
+                  Authorization: `Bearer ${token}`,
                 },
               }
             );

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import axios from "axios";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import UpCommingSingle from './UpCommingSingle';
+import token from "../token"
 
 
 type Item = {
@@ -22,7 +23,7 @@ const UpCommingMovies = () => {
               {
                 headers: {
                   accept: "application/json",
-                  Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODRlMzRlNjI4NTEwMTYyMDQ4NjQyZmZkZjVmMGJhOSIsIm5iZiI6MTczMDI4NjMxNC44NTAxMDI0LCJzdWIiOiI2Njc2YzFjMDMwYWRhZmI0ZWE2ZmZhMzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ewCuevxMyq_CpbLDGVvTKiF-E9XoHl15zaD1U5XV92k",
+                  Authorization: `Bearer ${token}`,
                 },
               }
             );
