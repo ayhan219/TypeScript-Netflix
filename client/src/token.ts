@@ -1,3 +1,6 @@
 const token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODRlMzRlNjI4NTEwMTYyMDQ4NjQyZmZkZjVmMGJhOSIsIm5iZiI6MTczMDI4NjMxNC44NTAxMDI0LCJzdWIiOiI2Njc2YzFjMDMwYWRhZmI0ZWE2ZmZhMzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ewCuevxMyq_CpbLDGVvTKiF-E9XoHl15zaD1U5XV92k";
-export default token;
+const API = "184e34e628510162048642ffdf5f0ba9"
+export default {
+    token,API
+};
