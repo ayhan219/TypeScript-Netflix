@@ -28,7 +28,6 @@ const UpCommingMovies = () => {
               }
             );
             setUpComming(response.data.results)
-            console.log(response.data.results);
             
             
           } catch (error) {
