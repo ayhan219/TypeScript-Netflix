@@ -36,7 +36,7 @@ const Navbar = (props: Props) => {
             <a href="" className="cursor-pointer">
               Home
             </a>
-            <a href="" className="cursor-pointer">
+            <a href="/tvshows" className="cursor-pointer">
               Tv Shows
             </a>
             <a href="" className="cursor-pointer">
