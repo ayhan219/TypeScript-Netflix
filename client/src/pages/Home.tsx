@@ -3,7 +3,6 @@ import HomeInfo from '../components/HomeInfo';
 import PopularMovies from '../components/PopularMovies';
 import NowPlayingMovies from '../components/NowPlayingMovies';
 import UpCommingMovies from '../components/UpCommingMovies';
-import Footer from '../components/Footer';
 
 
 
@@ -21,7 +20,6 @@ const Home = (props: Props) => {
       <PopularMovies />
       <NowPlayingMovies />
       <UpCommingMovies />
-      <Footer />
     </div>
     
     </>
