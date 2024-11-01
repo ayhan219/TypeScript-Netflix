@@ -4,12 +4,14 @@ import logoSmall from "../assets/logosmall.png";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
+  const [openArea,setOpenArea] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,6 +26,8 @@ const Navbar = (props: Props) => {
   const toggleHamburger = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
+
+  
 
   return (
     <div className="relative flex items-center justify-center w-full bg-black h-36">
@@ -47,9 +51,6 @@ const Navbar = (props: Props) => {
               Movies
             </a>
             <a href="#" className="cursor-pointer">
-              New & Popular
-            </a>
-            <a href="#" className="cursor-pointer">
               My List
             </a>
             <a href="#" className="cursor-pointer">
@@ -70,7 +71,7 @@ const Navbar = (props: Props) => {
                   src="https://pbs.twimg.com/media/GB2vydcX0AAgt5f.png"
                   alt="User Avatar"
                 />
-                <TiArrowSortedDown className="text-2xl cursor-pointer" />
+                <TiArrowSortedDown onClick={()=>setOpenArea(!openArea)} className="text-2xl cursor-pointer" />
               </div>
             </div>
           ) : (
@@ -93,9 +94,7 @@ const Navbar = (props: Props) => {
               <a href="/movies" className="cursor-pointer">
                 Movies
               </a>
-              <a href="#" className="cursor-pointer">
-                New & Popular
-              </a>
+              
               <a href="#" className="cursor-pointer">
                 My List
               </a>
@@ -105,6 +104,19 @@ const Navbar = (props: Props) => {
             </div>
           </div>
         )
+      }
+      {
+        openArea && <div className="absolute w-64 h-32 bg-black right-32 top-24">
+          <div className="flex flex-col items-center justify-center w-full h-full text-sm font-semibold text-white rounded-sm">
+            
+            <p>You don't have an account?</p>
+            <Link to={"/signup"}><span className="text-blue-600">Sign Up</span></Link>
+            <p>OR</p>
+            <Link to={"/login"}><span className="text-red-600">Login</span></Link>
+            
+            
+          </div>
+        </div>
       }
     </div>
   );
