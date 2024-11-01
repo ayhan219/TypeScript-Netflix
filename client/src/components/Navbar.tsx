@@ -21,6 +21,10 @@ const Navbar = (props: Props) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const toggleHamburger = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
+  };
+
   return (
     <div className="relative flex items-center justify-center w-full bg-black h-36">
       <div className="w-[85%] h-full flex items-center ">
@@ -42,13 +46,13 @@ const Navbar = (props: Props) => {
             <a href="/movies" className="cursor-pointer">
               Movies
             </a>
-            <a href="" className="cursor-pointer">
+            <a href="#" className="cursor-pointer">
               New & Popular
             </a>
-            <a href="" className="cursor-pointer">
+            <a href="#" className="cursor-pointer">
               My List
             </a>
-            <a href="" className="cursor-pointer">
+            <a href="#" className="cursor-pointer">
               Browse My Language
             </a>
           </div>
@@ -71,34 +75,36 @@ const Navbar = (props: Props) => {
             </div>
           ) : (
             <div className="flex justify-end w-full cursor-pointer">
-              <GiHamburgerMenu onClick={()=>setIsHamburgerOpen(!isHamburgerOpen)} className="text-4xl text-white" />
+              <GiHamburgerMenu onClick={toggleHamburger} className="text-4xl text-white" />
             </div>
           )}
         </div>
       </div>
       {
-        isHamburgerOpen && <div className="absolute w-full bg-black h-80 top-36">
-            <div className="flex flex-col pl-5 text-base font-bold text-white gap-7">
-            <a href="/" className="cursor-pointer">
-              Home
-            </a>
-            <a href="/tvshows" className="cursor-pointer">
-              Tv Shows
-            </a>
-            <a href="/movies" className="cursor-pointer">
-              Movies
-            </a>
-            <a href="" className="cursor-pointer">
-              New & Popular
-            </a>
-            <a href="" className="cursor-pointer">
-              My List
-            </a>
-            <a href="" className="cursor-pointer">
-              Browse My Language
-            </a>
+        isHamburgerOpen && (
+          <div className="absolute left-0 z-50 w-full bg-black top-36 h-80">
+            <div className="flex flex-col pt-5 pl-5 text-base font-bold text-white gap-7">
+              <a href="/" className="cursor-pointer">
+                Home
+              </a>
+              <a href="/tvshows" className="cursor-pointer">
+                Tv Shows
+              </a>
+              <a href="/movies" className="cursor-pointer">
+                Movies
+              </a>
+              <a href="#" className="cursor-pointer">
+                New & Popular
+              </a>
+              <a href="#" className="cursor-pointer">
+                My List
+              </a>
+              <a href="#" className="cursor-pointer">
+                Browse My Language
+              </a>
             </div>
-        </div>
+          </div>
+        )
       }
     </div>
   );
