@@ -33,7 +33,6 @@ const Movies = () => {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${token.API}&language=en-EN&page=${currentPage}`)
             setMovies(response.data.results)
             setTotalPages(response.data.total_pages)
-            console.log(response.data.results);
             
             
         } catch (error) {
@@ -61,7 +60,7 @@ const Movies = () => {
                 <div className='grid grid-cols-1 gap-8 mt-8 justify-items-center md:grid-cols-2 lg:grid-cols-4'>
                    {
                     movies.map((item,index)=>(
-                        <MoviesSingle item={item} index={index} />
+                        <MoviesSingle key={index} index={index} item={item}  />
                     ))
                    }
                 </div>

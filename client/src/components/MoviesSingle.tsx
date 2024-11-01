@@ -10,9 +10,9 @@ type MoviesProps ={
 }
 
 const MoviesSingle = ({item,index}:MoviesProps) => {
-
+    
  return(
-    <div key={index} className='border-2 border-gray-800 w-72 h-96 solid'>
+    <div   className='border-2 border-gray-800 w-72 h-96 solid'>
                     <div>
                         <img className='object-cover object-center w-full h-52' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                     </div>

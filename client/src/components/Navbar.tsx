@@ -77,15 +77,15 @@ const Navbar = (props: Props) => {
         </div>
       </div>
       {
-        isHamburgerOpen && <div className="absolute w-full h-80 top-36">
+        isHamburgerOpen && <div className="absolute w-full bg-black h-80 top-36">
             <div className="flex flex-col pl-5 text-base font-bold text-white gap-7">
-            <a href="" className="cursor-pointer">
+            <a href="/" className="cursor-pointer">
               Home
             </a>
-            <a href="" className="cursor-pointer">
+            <a href="/tvshows" className="cursor-pointer">
               Tv Shows
             </a>
-            <a href="" className="cursor-pointer">
+            <a href="/movies" className="cursor-pointer">
               Movies
             </a>
             <a href="" className="cursor-pointer">
