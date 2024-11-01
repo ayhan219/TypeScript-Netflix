@@ -5,14 +5,13 @@ import { FaSearch, FaBell } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import { IoMdArrowDropright } from "react-icons/io";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
-  const [openArea,setOpenArea] = useState<boolean>(false);
+  const [openArea, setOpenArea] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,113 +27,81 @@ const Navbar = (props: Props) => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
 
-  
-
   return (
-    <div className="relative flex items-center justify-center w-full bg-black h-36">
-      <div className="w-[85%] h-full flex items-center ">
-        <div className="flex items-center w-[70%] gap-16">
-          <div>
-            <img
-              className={`w-16 md:w-32 h-10 md:h-16 cursor-pointer`}
-              src={isSmallScreen ? logoSmall : logo}
-              alt="Logo"
-            />
+    <nav className="relative flex items-center justify-between w-full px-6 py-4 bg-black lg:py-6">
+      {/* Left Logo Section */}
+      <div className="flex items-center gap-4">
+        <img
+          className="w-12 cursor-pointer lg:w-20"
+          src={isSmallScreen ? logoSmall : logo}
+          alt="Logo"
+        />
+        {/* Links (Desktop only) */}
+        {!isSmallScreen && (
+          <div className="hidden gap-8 font-medium text-white lg:flex">
+            <Link to="/" className="transition hover:text-gray-400">Home</Link>
+            <Link to="/tvshows" className="transition hover:text-gray-400">Tv Shows</Link>
+            <Link to="/movies" className="transition hover:text-gray-400">Movies</Link>
+            <Link to="#" className="transition hover:text-gray-400">My List</Link>
+            <Link to="#" className="transition hover:text-gray-400">Browse</Link>
           </div>
-          <div className="hidden text-base font-bold text-white lg:flex gap-7">
-            <a href="/" className="cursor-pointer">
-              Home
-            </a>
-            <a href="/tvshows" className="cursor-pointer">
-              Tv Shows
-            </a>
-            <a href="/movies" className="cursor-pointer">
-              Movies
-            </a>
-            <a href="#" className="cursor-pointer">
-              My List
-            </a>
-            <a href="#" className="cursor-pointer">
-              Browse My Language
-            </a>
-          </div>
-        </div>
-        <div className="w-full lg:w-[20%]">
-          {!isSmallScreen ? (
-            <div className="flex items-center justify-end gap-10 text-white">
-              <div className="flex text-3xl gap-7">
-                <FaSearch className="cursor-pointer" />
-                <FaBell className="cursor-pointer" />
-              </div>
-              <div className="flex items-center gap-1 text-[#A8B0B5]">
-                <img
-                  className="w-10 h-10"
-                  src="https://pbs.twimg.com/media/GB2vydcX0AAgt5f.png"
-                  alt="User Avatar"
-                />
-                <TiArrowSortedDown onClick={()=>setOpenArea(!openArea)} className="text-2xl cursor-pointer" />
-              </div>
-            </div>
-          ) : (
-            <div className="flex justify-end w-full cursor-pointer">
-              <GiHamburgerMenu onClick={toggleHamburger} className="text-4xl text-white" />
-            </div>
-          )}
-        </div>
+        )}
       </div>
-      {
-        isHamburgerOpen && (
-          <div className="absolute left-0 z-50 w-full h-auto bg-black top-36">
-            <div className="flex flex-col pt-5 pl-5 text-base font-bold text-white gap-7">
-              <a href="/" className="cursor-pointer">
-                Home
-              </a>
-              <a href="/tvshows" className="cursor-pointer">
-                Tv Shows
-              </a>
-              <a href="/movies" className="cursor-pointer">
-                Movies
-              </a>
-              
-              <a href="#" className="cursor-pointer">
-                My List
-              </a>
-              <a href="#" className="cursor-pointer">
-                Browse My Language
-              </a>
+
+      {/* Right Icons Section */}
+      <div className="flex items-center gap-5 text-white">
+        {/* Icons (Responsive) */}
+        {!isSmallScreen ? (
+          <>
+            <FaSearch className="text-lg cursor-pointer hover:text-gray-400" />
+            <FaBell className="text-lg cursor-pointer hover:text-gray-400" />
+            <div className="relative flex items-center gap-1 cursor-pointer">
+              <img
+                className="w-10 h-10 rounded-full"
+                src="https://pbs.twimg.com/media/GB2vydcX0AAgt5f.png"
+                alt="User Avatar"
+              />
+              <TiArrowSortedDown
+                onClick={() => setOpenArea(!openArea)}
+                className="text-2xl transition hover:text-gray-400"
+              />
+              {/* Dropdown Area */}
+              {openArea && (
+                <div className="absolute right-0 w-48 p-4 bg-gray-800 rounded-lg shadow-lg top-12">
+                  <Link to="/signup" className="block text-sm text-white transition hover:text-blue-500">Sign Up</Link>
+                  <Link to="/login" className="block mt-2 text-sm text-white transition hover:text-red-500">Login</Link>
+                </div>
+              )}
             </div>
-            <div className="flex flex-col gap-10 p-4 text-white">
-              <div className="flex text-3xl gap-7">
-                <FaSearch className="cursor-pointer" />
-                <FaBell className="cursor-pointer" />
-              </div>
-              <div className="flex items-center gap-1 text-[#A8B0B5]">
-                <img
-                  className="w-10 h-10"
-                  src="https://pbs.twimg.com/media/GB2vydcX0AAgt5f.png"
-                  alt="User Avatar"
-                />
-                <IoMdArrowDropright onClick={()=>setOpenArea(!openArea)} className="text-2xl cursor-pointer" />
-              </div>
-            </div>
+          </>
+        ) : (
+          // Hamburger Menu Icon for Small Screens
+          <GiHamburgerMenu
+            onClick={toggleHamburger}
+            className="text-3xl cursor-pointer"
+          />
+        )}
+      </div>
+
+      {/* Hamburger Menu Dropdown (Mobile Only) */}
+      {isHamburgerOpen && (
+        <div className="absolute left-0 flex flex-col w-full p-5 space-y-4 text-white bg-black top-full">
+          <Link to="/" className="transition hover:text-gray-400">Home</Link>
+          <Link to="/tvshows" className="transition hover:text-gray-400">Tv Shows</Link>
+          <Link to="/movies" className="transition hover:text-gray-400">Movies</Link>
+          <Link to="#" className="transition hover:text-gray-400">My List</Link>
+          <Link to="#" className="transition hover:text-gray-400">Browse</Link>
+          <div className="flex justify-around mt-4">
+            <FaSearch className="cursor-pointer hover:text-gray-400" />
+            <FaBell className="cursor-pointer hover:text-gray-400" />
           </div>
-        )
-      }
-      {
-        openArea && <div className="absolute z-50 w-64 h-32 bg-black top-[25rem] right-0 md:right-32 md:top-24">
-          <div className="flex flex-col items-center justify-center w-[70%] text-xs md:text-sm font-semibold text-white rounded-sm md:w-full md:h-full">
-            
-            <p>You don't have an account?</p>
-            <Link to={"/signup"}><span className="text-blue-600">Sign Up</span></Link>
-            <p>OR</p>
-            <Link to={"/login"}><span className="text-red-600">Login</span></Link>
-            
-            
+          <div className="flex flex-col items-start mt-4 space-y-2">
+            <Link to="/signup" className="text-blue-500">Sign Up</Link>
+            <Link to="/login" className="text-red-500">Login</Link>
           </div>
-          
         </div>
-      }
-    </div>
+      )}
+    </nav>
   );
 };
 
