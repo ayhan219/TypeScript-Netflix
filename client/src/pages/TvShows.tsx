@@ -42,21 +42,20 @@ const TvShows = () => {
         if (page > 0 && page <= totalPages) {
             setCurrentPage(page);
             navigate(`?page=${page}`);
-            window.location.reload();
             window.scrollTo(0, 0); 
         }
     };
 
     return (
-        <div className='w-full bg-gradient-to-b from-gray-800 to-black flex justify-center py-10'>
+        <div className='flex justify-center w-full py-10 bg-gradient-to-b from-gray-800 to-black'>
             <div className='w-[90%] max-w-[1200px]'>
                 {/* Header Section */}
-                <div className='text-white text-center text-4xl md:text-5xl font-extrabold pb-8 border-b-2 border-gray-700'>
+                <div className='pb-8 text-4xl font-extrabold text-center text-white border-b-2 border-gray-700 md:text-5xl'>
                     <h2>TV Shows</h2>
                 </div>
 
                 {/* Grid Section */}
-                <div className='grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8'>
+                <div className='grid grid-cols-1 gap-8 mt-8 justify-items-center md:grid-cols-2 lg:grid-cols-4'>
                     {tvShows.map((item, index) => (
                         <TvShowsPageSingle key={index} item={item} />
                     ))}

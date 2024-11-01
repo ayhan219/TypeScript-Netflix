@@ -33,6 +33,8 @@ const Movies = () => {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${token.API}&language=en-EN&page=${currentPage}`)
             setMovies(response.data.results)
             setTotalPages(response.data.total_pages)
+            console.log(response.data.results);
+            
             
         } catch (error) {
             console.log(error);
