@@ -48,7 +48,7 @@ const TvShows = () => {
     };
 
     return (
-        <div className='w-full bg-gradient-to-b from-gray-900 to-black flex justify-center py-10'>
+        <div className='w-full bg-gradient-to-b from-gray-800 to-black flex justify-center py-10'>
             <div className='w-[90%] max-w-[1200px]'>
                 {/* Header Section */}
                 <div className='text-white text-center text-4xl md:text-5xl font-extrabold pb-8 border-b-2 border-gray-700'>
