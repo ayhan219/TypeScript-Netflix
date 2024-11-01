@@ -5,6 +5,7 @@ import { FaSearch, FaBell } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { IoMdArrowDropright } from "react-icons/io";
 
 type Props = {};
 
@@ -83,7 +84,7 @@ const Navbar = (props: Props) => {
       </div>
       {
         isHamburgerOpen && (
-          <div className="absolute left-0 z-50 w-full bg-black top-36 h-80">
+          <div className="absolute left-0 z-50 w-full h-auto bg-black top-36">
             <div className="flex flex-col pt-5 pl-5 text-base font-bold text-white gap-7">
               <a href="/" className="cursor-pointer">
                 Home
@@ -102,12 +103,26 @@ const Navbar = (props: Props) => {
                 Browse My Language
               </a>
             </div>
+            <div className="flex flex-col gap-10 p-4 text-white">
+              <div className="flex text-3xl gap-7">
+                <FaSearch className="cursor-pointer" />
+                <FaBell className="cursor-pointer" />
+              </div>
+              <div className="flex items-center gap-1 text-[#A8B0B5]">
+                <img
+                  className="w-10 h-10"
+                  src="https://pbs.twimg.com/media/GB2vydcX0AAgt5f.png"
+                  alt="User Avatar"
+                />
+                <IoMdArrowDropright onClick={()=>setOpenArea(!openArea)} className="text-2xl cursor-pointer" />
+              </div>
+            </div>
           </div>
         )
       }
       {
-        openArea && <div className="absolute w-64 h-32 bg-black right-32 top-24">
-          <div className="flex flex-col items-center justify-center w-full h-full text-sm font-semibold text-white rounded-sm">
+        openArea && <div className="absolute z-50 w-64 h-32 bg-black top-[25rem] right-0 md:right-32 md:top-24">
+          <div className="flex flex-col items-center justify-center w-[70%] text-xs md:text-sm font-semibold text-white rounded-sm md:w-full md:h-full">
             
             <p>You don't have an account?</p>
             <Link to={"/signup"}><span className="text-blue-600">Sign Up</span></Link>
@@ -116,6 +131,7 @@ const Navbar = (props: Props) => {
             
             
           </div>
+          
         </div>
       }
     </div>
