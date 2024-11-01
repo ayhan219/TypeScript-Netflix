@@ -4,6 +4,8 @@ import TvShows from "./pages/TvShows";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Movies from "./pages/Movies";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tvshows" element={<TvShows />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
