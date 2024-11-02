@@ -6,12 +6,16 @@ type TvShowsProps = {
         poster_path: string,
         vote_average: number,
         name: string,
-    };
+        id:number
+    },
+    findId:(id:number)=>void
 };
 
-const TvShowsPageSingle = ({item}:TvShowsProps) => {
+
+
+const TvShowsPageSingle = ({item,findId}:TvShowsProps) => {
   return (
-    <div className='w-72 h-96 border-2 solid border-gray-800'>
+    <div onClick={()=>findId(item.id)} className='w-72 h-96 border-2 solid border-gray-800'>
                     <div>
                         <img className='w-full h-52 object-center object-cover' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                     </div>

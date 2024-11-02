@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TvShowsPageSingle from '../components/TvShowsPageSingle';
 import API from "../token";
 import axios from "axios";
+import {useNetflixContext} from "../context/AllContext"
 
 type TvShows = {
     poster_path: string;
     vote_average: number;
     name: string;
+    id:number;
 };
 
-const TvShows = () => {
+const TvShows : React.FC = () => {
     const [tvShows, setTvShows] = useState<TvShows[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(1);
+    const {setTvShowId} = useNetflixContext();
+    
+    
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -47,6 +52,10 @@ const TvShows = () => {
         }
     };
 
+    const findId = (id:number)=>{
+       setTvShowId(id);
+    }
+
     return (
         <div className='w-full bg-gradient-to-b from-gray-900 to-black flex justify-center py-10'>
             <div className='w-[90%] max-w-[1200px]'>
@@ -58,7 +67,7 @@ const TvShows = () => {
                 {/* Grid Section */}
                 <div className='grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8'>
                     {tvShows.map((item, index) => (
-                        <TvShowsPageSingle key={index} item={item} />
+                        <TvShowsPageSingle key={index} item={item} findId={findId} />
                     ))}
                 </div>
 
