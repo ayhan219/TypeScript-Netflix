@@ -21,7 +21,7 @@ function App() {
           <Route path="/newpopular" element={<NewPopular />} />
           <Route path="/signup" element={<Login />} />
           <Route path="/login" element={<Signup />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/tv/details/:id" element={<Details />} />
         </Routes>
         <Footer />
       </BrowserRouter>

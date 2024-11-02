@@ -54,6 +54,7 @@ const TvShows : React.FC = () => {
 
     const findId = (id:number)=>{
        setTvShowId(id);
+       navigate(`/tv/details/${id}`)
     }
 
     return (
