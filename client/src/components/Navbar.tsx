@@ -12,6 +12,7 @@ const Navbar = (props: Props) => {
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
   const [openArea, setOpenArea] = useState<boolean>(false);
+  const [openSearch, setOpenSearch] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,9 +52,8 @@ const Navbar = (props: Props) => {
             <Link to="#" className="hover:text-gray-400 transition">
               My List
             </Link>
-            <Link to="#" className="hover:text-gray-400 transition">
-              Browse
-            </Link>
+
+            <a onClick={() => setOpenSearch(!openSearch)}>Browse</a>
           </div>
         )}
       </div>
@@ -143,6 +143,30 @@ const Navbar = (props: Props) => {
           </div>
         </div>
       )}
+      {openSearch && (
+  <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 z-50">
+    <div className="relative w-[90%] lg:w-1/2 bg-black rounded-lg shadow-lg p-6 mt-32">
+      <button
+        onClick={() => setOpenSearch(false)}
+        className="absolute top-3 right-3 text-white text-xl hover:text-gray-400"
+      >
+        &times;
+      </button>
+      <h2 className="text-white text-xl mb-4 font-semibold">Search</h2>
+      <div className="flex items-center gap-2">
+        <input
+          type="text"
+          placeholder="Search for something..."
+          className="w-full py-2 px-4 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring focus:ring-gray-600"
+        />
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </nav>
   );
 };
