@@ -1,5 +1,4 @@
 import React from 'react'
-import img from "../assets/back.jpg"
 
 type TvShowsProps = {
     item: {

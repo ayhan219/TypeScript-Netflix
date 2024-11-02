@@ -8,6 +8,7 @@ type NewPopular = {
     poster_path:string,
     vote_average:number,
     title:string
+    id:number
 }
 
 const Movies = () => {
@@ -60,7 +61,7 @@ const Movies = () => {
                 <div className='grid grid-cols-1 gap-8 mt-8 justify-items-center md:grid-cols-2 lg:grid-cols-4'>
                    {
                     movies.map((item,index)=>(
-                        <MoviesSingle key={index} index={index} item={item}  />
+                        <MoviesSingle key={index}  item={item}  />
                     ))
                    }
                 </div>

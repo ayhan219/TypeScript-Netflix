@@ -5,14 +5,15 @@ type MoviesProps ={
         poster_path:string,
         vote_average:number,
         title:string
-    }
-    index:number
+        id:number
+    },
+    findId?:(id:number)=>void;
 }
 
-const MoviesSingle = ({item,index}:MoviesProps) => {
+const MoviesSingle = ({item,findId}:MoviesProps) => {
     
  return(
-    <div   className='border-2 border-gray-800 w-72 h-96 solid'>
+    <div onClick={() => findId && findId(item.id)} className='border-2 border-gray-800 w-72 h-96 solid'>
                     <div>
                         <img className='object-cover object-center w-full h-52' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                     </div>

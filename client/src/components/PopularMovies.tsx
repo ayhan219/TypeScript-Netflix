@@ -12,7 +12,7 @@ type Item = {
 const PopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState<Item[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     const getPopular = async () => {
       try {
