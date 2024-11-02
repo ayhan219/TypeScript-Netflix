@@ -7,12 +7,13 @@ import Movies from "./pages/Movies";
 import NewPopular from "./pages/NewPopular";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Details from "./pages/Details";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
+      <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tvshows" element={<TvShows />} />
@@ -20,6 +21,7 @@ function App() {
           <Route path="/newpopular" element={<NewPopular />} />
           <Route path="/signup" element={<Login />} />
           <Route path="/login" element={<Signup />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
         <Footer />
       </BrowserRouter>
