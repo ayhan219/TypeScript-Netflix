@@ -14,7 +14,7 @@ type TvShowsProps = {
 
 const TvShowsPageSingle = ({item,findId}:TvShowsProps) => {
   return (
-    <div onClick={()=>findId(item.id)} className='w-72 h-96 border-2 solid border-gray-800'>
+    <div onClick={()=>findId(item.id)} className='w-72 h-96 border-2 solid border-gray-800 hover:scale-105 duration-200 ease-in-out cursor-pointer'>
                     <div>
                         <img className='w-full h-52 object-center object-cover' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                     </div>

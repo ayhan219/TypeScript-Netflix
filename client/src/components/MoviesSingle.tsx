@@ -13,7 +13,7 @@ type MoviesProps ={
 const MoviesSingle = ({item,findId}:MoviesProps) => {
     
  return(
-    <div onClick={() => findId && findId(item.id)} className='border-2 border-gray-800 w-72 h-96 solid'>
+    <div onClick={() => findId && findId(item.id)} className='border-2 border-gray-800 w-72 h-96 solid hover:scale-105 duration-200 ease-in-out cursor-pointer'>
                     <div>
                         <img className='object-cover object-center w-full h-52' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                     </div>
