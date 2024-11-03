@@ -5,6 +5,7 @@ import { FaSearch, FaBell } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { useNetflixContext } from "../context/AllContext";
 
 type Props = {};
 
@@ -13,6 +14,7 @@ const Navbar = (props: Props) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
   const [openArea, setOpenArea] = useState<boolean>(false);
   const [openSearch, setOpenSearch] = useState<boolean>(false);
+  const {setSearchedValue,searchedValue} = useNetflixContext();
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,6 +29,11 @@ const Navbar = (props: Props) => {
   const toggleHamburger = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
+
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>)=>{
+    setSearchedValue(event.target.value)
+    
+  }
 
   return (
     <nav className="relative flex items-center justify-between w-full bg-black px-6 py-4 lg:py-6">
@@ -53,7 +60,7 @@ const Navbar = (props: Props) => {
               My List
             </Link>
 
-            <a onClick={() => setOpenSearch(!openSearch)}>Browse</a>
+            <a className="cursor-pointer" onClick={() => setOpenSearch(!openSearch)}>Browse</a>
           </div>
         )}
       </div>
@@ -156,12 +163,15 @@ const Navbar = (props: Props) => {
       <div className="flex items-center gap-2">
         <input
           type="text"
+          onChange={(e)=>handleInput(e)}
           placeholder="Search for something..."
           className="w-full py-2 px-4 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring focus:ring-gray-600"
         />
+        <Link onClick={()=>setOpenSearch(!openSearch)} to={`/searched/${searchedValue}`}>
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
           Search
         </button>
+        </Link>
       </div>
     </div>
   </div>

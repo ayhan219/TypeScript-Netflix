@@ -8,6 +8,7 @@ import NewPopular from "./pages/NewPopular";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Details from "./pages/Details";
+import SearchedDatas from "./pages/SearchedDatas";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Login />} />
           <Route path="/login" element={<Signup />} />
           <Route path="/:type/details/:id" element={<Details />} />
+          <Route path="/searched/:value" element={<SearchedDatas />} />
         </Routes>
         <Footer />
       </BrowserRouter>
