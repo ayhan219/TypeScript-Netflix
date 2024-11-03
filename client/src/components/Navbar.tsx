@@ -14,6 +14,7 @@ const Navbar = (props: Props) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
   const [openArea, setOpenArea] = useState<boolean>(false);
   const [openSearch, setOpenSearch] = useState<boolean>(false);
+  const [isClosing, setIsClosing] = useState<boolean>(false); // New state for closing animation
   const { setSearchedValue, searchedValue } = useNetflixContext();
 
   useEffect(() => {
@@ -32,6 +33,14 @@ const Navbar = (props: Props) => {
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchedValue(event.target.value);
+  };
+
+  const handleCloseSearch = () => {
+    setIsClosing(true); 
+    setTimeout(() => {
+      setOpenSearch(false); 
+      setIsClosing(false); 
+    }, 500); 
   };
 
   return (
@@ -155,10 +164,14 @@ const Navbar = (props: Props) => {
         </div>
       )}
       {openSearch && (
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 z-50 ">
-          <div className="relative w-[90%] lg:w-1/2 bg-black rounded-lg shadow-lg p-6 mt-32 animate-slideDown ">
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 z-50">
+          <div
+            className={`relative w-[90%] lg:w-1/2 bg-black rounded-lg shadow-lg p-6 mt-32 ${
+              isClosing ? "animate-slideUp" : "animate-slideDown"
+            }`}
+          >
             <button
-              onClick={() => setOpenSearch(false)}
+              onClick={handleCloseSearch}
               className="absolute top-3 right-3 text-white text-xl hover:text-gray-400"
             >
               &times;
