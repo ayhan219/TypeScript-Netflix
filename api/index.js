@@ -5,8 +5,8 @@ const dotenv = require("dotenv");
 const AuthRouter = require("./router/UserRouter")
 dotenv.config();
 
-
-app.use("/auth",AuthRouter);
+app.use(express.json());
+app.use("/api/auth",AuthRouter);
 
 const connectToDB = async () => {
   try {
