@@ -65,7 +65,7 @@ const login = async (req, res) => {
    
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", 
+      secure: true,
       maxAge: 3600000 
     });
 
@@ -83,6 +83,8 @@ const login = async (req, res) => {
 
 const getCurrentUser = async(req,res)=>{
   const user = req.user;
+  console.log(user);
+  
   try {
     if(!user){
       return res.status(400).json({ message: "user not found" });

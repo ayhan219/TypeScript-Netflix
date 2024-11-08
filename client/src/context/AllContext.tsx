@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import axios from "axios"
 
 
 interface NetflixContextType {
@@ -22,6 +23,21 @@ export const NetfixProvider :React.FC<NetflixProviderProps> =({children})=>{
     const [movieId,setMovieId] = useState<number>(0);
     const [searchedValue,setSearchedValue] = useState<string>("");
 
+    const getCurrentUser = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/api/auth/getcurrent", {
+                withCredentials: true
+            });
+            console.log(response);
+            
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(()=>{
+        getCurrentUser();
+    },[])
     return(
         <NetflixContext.Provider value={{tvShowId,setTvShowId,movieId,setMovieId,searchedValue,setSearchedValue}}>
             {children}
