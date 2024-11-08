@@ -20,8 +20,8 @@ function App() {
           <Route path="/tvshows" element={<TvShows />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/newpopular" element={<NewPopular />} />
-          <Route path="/signup" element={<Login />} />
-          <Route path="/login" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/:type/details/:id" element={<Details />} />
           <Route path="/searched/:value" element={<SearchedDatas />} />
         </Routes>
