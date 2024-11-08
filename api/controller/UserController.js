@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const User = require("../model/User")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
 
 const signUp = async(req,res)=>{
@@ -42,24 +43,44 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Please provide all fields" });
     }
 
-
     const findUser = await User.findOne({ email });
     if (!findUser) {
       return res.status(400).json({ message: "User not found" });
     }
 
-  
     const isPasswordMatch = await bcrypt.compare(password, findUser.password);
     if (!isPasswordMatch) {
       return res.status(400).json({ message: "Password is not correct" });
     }
 
-    
-    res.status(200).json({ message: "Login successful", user: findUser });
+    const token = jwt.sign(
+      {
+        username: findUser.username,
+        email: findUser.email
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+   
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", 
+      maxAge: 3600000 
+    });
+
+    return res.status(200).json({
+      message: "Login successful",
+      user: {
+        username: findUser.username,
+        email: findUser.email,
+      }
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 module.exports ={
     signUp,
     login
