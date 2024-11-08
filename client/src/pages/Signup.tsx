@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import axios from "axios"
 
 
-type Props = {}
+type User ={
+  username:string,
+  email:string,
+  password:string,
+  handleSignup: void;
+}
 
-const Signup = (props: Props) => {
+const Signup:React.FC= () => {
+
+  const [username,setUsername] = useState<string>("");
+  const [email,setEmail] = useState<string>("");
+  const [password,setPassword] = useState<string>("");
+
+  const handleSignup = async()=>{
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/signup",{
+        username,
+        email,
+        password
+      })
+      console.log(response.data);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
   return (
     <div 
       className="flex items-center justify-center w-full h-screen bg-center cover" 
@@ -34,7 +59,9 @@ const Signup = (props: Props) => {
           autoComplete="off"
         >
           <TextField 
-            id="username" 
+            id="username"
+            value={username}
+            onChange={(e)=>setUsername(e.target.value)}
             label="Username" 
             variant="filled" 
             InputLabelProps={{ style: { color: '#e5e5e5' } }}
@@ -45,6 +72,8 @@ const Signup = (props: Props) => {
           <TextField 
             id="email" 
             label="Email" 
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
             variant="filled" 
             InputLabelProps={{ style: { color: '#e5e5e5' } }}
             InputProps={{
@@ -54,6 +83,8 @@ const Signup = (props: Props) => {
           <TextField 
             id="password" 
             label="Password" 
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
             type="password"
             variant="filled" 
             InputLabelProps={{ style: { color: '#e5e5e5' } }}
@@ -62,6 +93,7 @@ const Signup = (props: Props) => {
             }}
           />
           <Button 
+          onClick={()=>handleSignup()}
             variant="contained" 
             color="error" 
             style={{ width: '100%', padding: '12px 0', marginTop: '8px' }}
