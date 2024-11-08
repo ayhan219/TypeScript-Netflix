@@ -31,7 +31,7 @@ const Signup: React.FC = () => {
       );
       if (response.status === 201) {
         toast.success("Signup Successfull");
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
