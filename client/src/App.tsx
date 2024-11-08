@@ -9,11 +9,14 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Details from "./pages/Details";
 import SearchedDatas from "./pages/SearchedDatas";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
+      <ToastContainer />
       <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
