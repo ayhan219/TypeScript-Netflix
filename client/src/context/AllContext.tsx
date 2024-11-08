@@ -9,6 +9,11 @@ interface NetflixContextType {
     setMovieId:(movieId:number)=>void;
     searchedValue:string;
     setSearchedValue:(searchedValue:string)=>void;
+    user:User | null;
+}
+type User ={
+    username:string,
+    email:string
 }
 
 const NetflixContext = createContext<NetflixContextType | undefined>(undefined);
@@ -22,6 +27,7 @@ export const NetfixProvider :React.FC<NetflixProviderProps> =({children})=>{
     const [tvShowId,setTvShowId] = useState<number>(0);
     const [movieId,setMovieId] = useState<number>(0);
     const [searchedValue,setSearchedValue] = useState<string>("");
+    const [user, setUser] = useState<User | null>(null);
 
     const getCurrentUser = async () => {
         try {
@@ -39,7 +45,7 @@ export const NetfixProvider :React.FC<NetflixProviderProps> =({children})=>{
         getCurrentUser();
     },[])
     return(
-        <NetflixContext.Provider value={{tvShowId,setTvShowId,movieId,setMovieId,searchedValue,setSearchedValue}}>
+        <NetflixContext.Provider value={{tvShowId,setTvShowId,movieId,setMovieId,searchedValue,setSearchedValue,user}}>
             {children}
         </NetflixContext.Provider>
     )
