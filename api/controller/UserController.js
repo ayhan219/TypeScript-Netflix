@@ -34,6 +34,33 @@ const signUp = async(req,res)=>{
     }
 }
 
+const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    if (!email || !password) {
+      return res.status(400).json({ message: "Please provide all fields" });
+    }
+
+
+    const findUser = await User.findOne({ email });
+    if (!findUser) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+  
+    const isPasswordMatch = await bcrypt.compare(password, findUser.password);
+    if (!isPasswordMatch) {
+      return res.status(400).json({ message: "Password is not correct" });
+    }
+
+    
+    res.status(200).json({ message: "Login successful", user: findUser });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 module.exports ={
-    signUp
+    signUp,
+    login
 }
