@@ -81,7 +81,21 @@ const login = async (req, res) => {
   }
 };
 
+const getCurrentUser = async(req,res)=>{
+  const user = req.user;
+  try {
+    if(!user){
+      return res.status(400).json({ message: "user not found" });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).json({ message: "server error", error });
+  }
+
+}
+
 module.exports ={
     signUp,
-    login
+    login,
+    getCurrentUser
 }

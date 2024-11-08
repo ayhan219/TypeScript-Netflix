@@ -14,7 +14,7 @@ const Navbar = (props: Props) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
   const [openArea, setOpenArea] = useState<boolean>(false);
   const [openSearch, setOpenSearch] = useState<boolean>(false);
-  const [isClosing, setIsClosing] = useState<boolean>(false); // New state for closing animation
+  const [isClosing, setIsClosing] = useState<boolean>(false); 
   const { setSearchedValue, searchedValue } = useNetflixContext();
 
   useEffect(() => {
