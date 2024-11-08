@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import axios from "axios"
+import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
-type Props = {}
 
-const Login = (props: Props) => {
+const Login:React.FC = () => {
+  const [email,setEmail] = useState<string>("");
+  const [password,setPassword] = useState<string>("");
+  const navigate = useNavigate();
+
+  const handleLogin = async()=>{
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/login",{
+        email,
+        password
+      })
+      if(response.status===200){
+        toast.success("Login Successfull!")
+        navigate("/");
+      }
+      
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message;
+      toast.error(errorMessage)
+      console.log(error);
+      
+    }
+  }
+
     return (
         <div 
           className="flex items-center justify-center w-full h-screen bg-center cover" 
@@ -34,6 +59,8 @@ const Login = (props: Props) => {
             >
               <TextField 
                 id="email" 
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
                 label="Email" 
                 variant="filled" 
                 InputLabelProps={{ style: { color: '#e5e5e5' } }}
@@ -43,7 +70,9 @@ const Login = (props: Props) => {
               />
               <TextField 
                 id="password" 
-                label="Password" 
+                label="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)} 
                 type="password"
                 variant="filled" 
                 InputLabelProps={{ style: { color: '#e5e5e5' } }}
@@ -53,10 +82,11 @@ const Login = (props: Props) => {
               />
               <Button 
                 variant="contained" 
+                onClick={handleLogin}
                 color="error" 
                 style={{ width: '100%', padding: '12px 0', marginTop: '8px' }}
               >
-                Sign Up
+                Login
               </Button>
             </Box>
           </div>
