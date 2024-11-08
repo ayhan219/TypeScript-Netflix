@@ -15,7 +15,8 @@ const Navbar = (props: Props) => {
   const [openArea, setOpenArea] = useState<boolean>(false);
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const [isClosing, setIsClosing] = useState<boolean>(false); 
-  const { setSearchedValue, searchedValue } = useNetflixContext();
+  const { setSearchedValue, searchedValue,user } = useNetflixContext();
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,21 +98,49 @@ const Navbar = (props: Props) => {
               />
               {/* Dropdown Area */}
               {openArea && (
-                <div className="absolute top-12 right-0 w-48 bg-gray-800 rounded-lg shadow-lg p-4 z-50">
-                  <Link
-                    to="/signup"
-                    className="block text-sm text-white hover:text-blue-500 transition"
-                  >
-                    Sign Up
-                  </Link>
-                  <Link
-                    to="/login"
-                    className="block text-sm text-white hover:text-red-500 transition mt-2"
-                  >
-                    Login
-                  </Link>
+    <div className="absolute top-12 right-0 w-64 bg-gray-800 rounded-lg shadow-lg p-4 z-50">
+        {
+            user === null ? (
+                <>
+                    <Link
+                        to="/signup"
+                        className="block text-sm text-white hover:text-blue-500 transition p-2 rounded-lg hover:bg-gray-700"
+                    >
+                        Sign Up
+                    </Link>
+                    <Link
+                        to="/login"
+                        className="block text-sm text-white hover:text-red-500 transition mt-2 p-2 rounded-lg hover:bg-gray-700"
+                    >
+                        Login
+                    </Link>
+                </>
+            ) : (
+                <div className="text-white text-center">
+                    <div className="mb-2 flex justify-center items-center">
+                       
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex justify-center items-center text-white mr-2">
+                            {user.username.charAt(0).toUpperCase()}
+                        </div>
+                        <span className="font-semibold">Welcome, {user.username}</span>
+                    </div>
+                    <Link
+                        to="/profile"
+                        className="block text-sm text-blue-300 hover:text-blue-500 transition mt-2 text-center"
+                    >
+                        View Profile
+                    </Link>
+                    <button
+                        className="block text-sm text-red-500 hover:text-red-700 transition mt-2 text-center w-full"
+                    >
+                        Logout
+                    </button>
                 </div>
-              )}
+            )
+        }
+    </div>
+)}
+
             </div>
           </>
         ) : (

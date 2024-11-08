@@ -34,7 +34,7 @@ export const NetfixProvider :React.FC<NetflixProviderProps> =({children})=>{
             const response = await axios.get("http://localhost:5000/api/auth/getcurrent", {
                 withCredentials: true
             });
-            console.log(response);
+            setUser(response.data);
             
         } catch (error) {
             console.log(error);
