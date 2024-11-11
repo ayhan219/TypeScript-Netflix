@@ -33,7 +33,7 @@ const Details = () => {
         getDetails();
     }, [id]); 
 
-    if (!detailsOfTheData) return <div>Loading...</div>; 
+    if (!detailsOfTheData) return <div>Loading data...</div>; 
 
     return (
         <div className='w-full h-[90vh] relative'>

@@ -10,15 +10,13 @@ const Footer = (props: Props) => {
   return (
     <div className='w-full h-[40vh] bg-black pt-10 flex justify-center'>
       <div className='w-[70%] md:w-[60%] h-full flex flex-col items-center'>
-        {/* Social Media Icons */}
+      
         <div className='text-white text-2xl md:text-4xl flex gap-6 mb-8'>
           <FaFacebook />
           <FaSquareInstagram />
           <FaTwitter />
           <FaYoutube />
         </div>
-
-        {/* Footer Links */}
         <div className='text-white text-xs md:text-sm flex justify-between w-full pt-6 pb-10 gap-4'>
           <div className='w-1/4 flex flex-col gap-4 font-semibold'>
             <a href="">Audio Description</a>
@@ -41,8 +39,6 @@ const Footer = (props: Props) => {
             <a href="">Contact Us</a>
           </div>
         </div>
-
-        {/* Footer Copyright */}
         <div className='text-white text-xs md:text-sm text-center'>
           <h2>© 1997-2024 Netflix Inc.</h2>
         </div>

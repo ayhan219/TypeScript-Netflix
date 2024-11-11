@@ -12,7 +12,6 @@ type User = {
   password: string;
   handleSignup: void;
 };
-
 const Signup: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -46,13 +45,11 @@ const Signup: React.FC = () => {
         backgroundSize: "cover",
       }}
     >
-      {/* Opak arka plan kutusu */}
       <div className="w-[90%] max-w-md p-8 bg-black bg-opacity-70 rounded-md">
         <div className="w-full mb-6 text-4xl font-bold text-center text-white">
           <h2>Sign Up</h2>
         </div>
 
-        {/* Form alanı */}
         <Box
           component="form"
           sx={{
