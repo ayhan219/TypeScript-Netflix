@@ -26,6 +26,7 @@ const Login: React.FC = () => {
       if (response.status === 200) {
         toast.success("Login Successfull!");
         navigate("/");
+        window.location.reload();
       }
     } catch (error: any) {
       const errorMessage = error.response?.data?.message;
