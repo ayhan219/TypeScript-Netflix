@@ -13,7 +13,8 @@ interface NetflixContextType {
 }
 type User ={
     username:string,
-    email:string
+    email:string,
+    id:Number
 }
 
 const NetflixContext = createContext<NetflixContextType | undefined>(undefined);

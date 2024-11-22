@@ -4,7 +4,9 @@ const User = require("../model/User")
 
 const addFavorites = async(req,res)=>{
 
-    const { userId, id, type, title, poster_path } = req.body;
+    const { userId, id,title, poster_path } = req.body;
+    console.log(userId,id,title,poster_path);
+    
 
     try {
         const findUser = await User.findById(userId);
@@ -13,13 +15,13 @@ const addFavorites = async(req,res)=>{
             return res.status(400).json({message:"user not found"})
         }
 
-        const isFavorite = findUser.favorites.some(fav => fav.id === id && fav.type === type);
+        const isFavorite = findUser.favorites.some(fav => fav.id === id );
 
         if (isFavorite) {
             return res.status(400).json({ message: 'Already in favorites' });
           }
 
-          findUser.favorites.push({ id, type, title, poster_path });
+          findUser.favorites.push({ id, title, poster_path });
     await findUser.save();
 
     res.status(200).json({ message: 'Added to favorites', favorites: findUser.favorites });
