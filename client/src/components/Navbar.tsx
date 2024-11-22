@@ -6,6 +6,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useNetflixContext } from "../context/AllContext";
+import axios from "axios";
 
 type Props = {};
 
@@ -43,6 +44,25 @@ const Navbar = (props: Props) => {
       setIsClosing(false); 
     }, 500); 
   };
+
+
+  const handleLogout=async()=>{
+
+    try {
+      const response = await axios.delete("http://localhost:5000/api/auth/logout",{
+        withCredentials:true
+      })
+      console.log(response);
+      if(response.status===200){
+        window.location.reload();
+      }
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+  }
 
   return (
     <nav className="relative flex items-center justify-between w-full bg-black px-6 py-4 lg:py-6">
@@ -131,6 +151,7 @@ const Navbar = (props: Props) => {
                         View Profile
                     </Link>
                     <button
+                        onClick={()=>handleLogout()}
                         className="block text-sm text-red-500 hover:text-red-700 transition mt-2 text-center w-full"
                     >
                         Logout
