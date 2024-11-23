@@ -85,7 +85,7 @@ const Navbar = (props: Props) => {
             <Link to="/movies" className="hover:text-gray-400 transition">
               Movies
             </Link>
-            <Link to="#" className="hover:text-gray-400 transition">
+            <Link to="/favorites" className="hover:text-gray-400 transition">
               My List
             </Link>
 
