@@ -84,7 +84,6 @@ const login = async (req, res) => {
 
 const getCurrentUser = async(req,res)=>{
   const user = req.user;
-  console.log(user);
   
   try {
     if(!user){

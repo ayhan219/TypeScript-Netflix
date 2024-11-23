@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios"
+import { useNetflixContext } from '../context/AllContext';
+import FavoritesItem from '../components/FavoritesItem';
 
-type Props = {};
 
-const Favorites = (props: Props) => {
+
+type Favorites ={
+    poster_path:string,
+    title:string,
+
+}
+
+const Favorites = () => {
+
+    const [favorites,setFavorites] = useState<Favorites[]>([]);
+    const {user} = useNetflixContext();
+
+
+    const getFavorites = async()=>{
+        try {
+            const response = await axios.get("http://localhost:5000/api/movie/getfavorites",{
+                params:{
+                    userId:user?.id
+                }
+            });
+            console.log(response.data);
+            
+            setFavorites(response.data)
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
+    useEffect(()=>{
+       getFavorites();
+    },[user])
+
+
   return (
     <div className="w-full h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
       {/* Header Section */}
@@ -16,42 +51,17 @@ const Favorites = (props: Props) => {
       <div className="p-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {/* Card Example */}
-          <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 duration-200">
-            <img
-              src="https://via.placeholder.com/300x450?text=Movie+Poster"
-              alt="Movie Poster"
-              className="w-full h-72 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold truncate">Movie Title</h3>
-              <p className="text-gray-400 text-sm mt-1">IMDB Rating: 8.7</p>
-            </div>
-          </div>
+         {
+           favorites.map((item,index)=>(
+            <FavoritesItem  key={index}
+            poster_path={item.poster_path}
+            title={item.title} />
+           ))
+         }
 
-          {/* Repeat cards as needed */}
-          <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 duration-200">
-            <img
-              src="https://via.placeholder.com/300x450?text=Movie+Poster"
-              alt="Movie Poster"
-              className="w-full h-72 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold truncate">Movie Title</h3>
-              <p className="text-gray-400 text-sm mt-1">IMDB Rating: 9.3</p>
-            </div>
-          </div>
+          
 
-          <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 duration-200">
-            <img
-              src="https://via.placeholder.com/300x450?text=Movie+Poster"
-              alt="Movie Poster"
-              className="w-full h-72 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold truncate">Movie Title</h3>
-              <p className="text-gray-400 text-sm mt-1">IMDB Rating: 7.8</p>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

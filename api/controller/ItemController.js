@@ -33,7 +33,8 @@ const addFavorites = async(req,res)=>{
 }
 
 const getFavorites = async(req,res)=>{
-    const {userId} = req.body;
+    const {userId} = req.query;
+    
 
     const findUser =await User.findById(userId);
 
