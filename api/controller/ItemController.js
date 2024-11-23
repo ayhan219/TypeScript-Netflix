@@ -46,7 +46,41 @@ const getFavorites = async(req,res)=>{
     
 }
 
+const deleteFavorites = async(req,res)=>{
+
+const {userId,itemId} = req.body;
+
+try {
+    
+    if(!userId || !itemId){
+        return res.status(400).json({message:"provide all area"})
+    }
+    const findUser = await User.findById(userId);
+    
+    if(!findUser){
+        return res.status(400).json({message:"user not found"})
+    }
+    const newFavorites = findUser.favorites.filter((item)=>item.id!==itemId);
+    findUser.favorites = newFavorites;
+    
+    await findUser.save();
+    
+    return res.status(200).json({
+        message: "Favorite item removed successfully"
+      });
+} catch (error) {
+    return res.status(500).json({ message: "Internal Server Error" });
+}
+
+
+
+
+
+
+}
+
 module.exports ={
     addFavorites,
-    getFavorites
+    getFavorites,
+    deleteFavorites
 }
