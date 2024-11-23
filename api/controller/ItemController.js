@@ -32,6 +32,20 @@ const addFavorites = async(req,res)=>{
 
 }
 
+const getFavorites = async(req,res)=>{
+    const {userId} = req.body;
+
+    const findUser =await User.findById(userId);
+
+    if(!findUser){
+        return res.status(400).json({message:"User not found"})
+    }
+
+    return res.status(200).json(findUser.favorites)
+    
+}
+
 module.exports ={
     addFavorites,
+    getFavorites
 }
