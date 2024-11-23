@@ -11,6 +11,7 @@ import Details from "./pages/Details";
 import SearchedDatas from "./pages/SearchedDatas";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/:type/details/:id" element={<Details />} />
           <Route path="/searched/:value" element={<SearchedDatas />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
         <Footer />
       </BrowserRouter>
