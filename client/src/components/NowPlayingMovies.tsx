@@ -50,7 +50,7 @@ const NowPlayingMovies = () => {
         }
       };
     return (
-        <div className="w-full h-[60vh] bg-black flex flex-col items-center pt-16">
+        <div className="w-full h-[50vh] bg-black flex flex-col items-center pt-16">
           <div className="w-full h-auto p-8 pl-24 text-white">
             <h2 className="text-2xl font-bold">Now Playing</h2>
           </div>
