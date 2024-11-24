@@ -46,7 +46,7 @@ const MoviesSingle: React.FC<MoviesProps> = ({ item, findId, buttonText = "Add F
   return (
     <div
       onClick={() => findId && findId(id)}
-      className="border-2 border-gray-800 w-72 h-96 rounded-lg hover:scale-105 duration-200 ease-in-out cursor-pointer bg-gray-900"
+      className="border-2 border-gray-800 w-72 h-96 rounded-lg hover:scale-105 duration-200 ease-in-out cursor-pointer bg-gray-900 flex flex-col"
       aria-label={`View details for ${title}`}
     >
       {/* Image Section */}
@@ -60,7 +60,7 @@ const MoviesSingle: React.FC<MoviesProps> = ({ item, findId, buttonText = "Add F
       </div>
 
       {/* Movie Details */}
-      <div className="w-full h-auto text-base font-semibold text-white p-3">
+      <div className="w-full h-auto text-base font-semibold text-white p-3 flex-grow">
         <MovieDetail label="Name:" value={title} />
         <MovieDetail
           label="IMDB:"
@@ -69,7 +69,7 @@ const MoviesSingle: React.FC<MoviesProps> = ({ item, findId, buttonText = "Add F
       </div>
 
       {/* Action Button */}
-      <div className="text-white text-center mt-2">
+      <div className="text-white text-center mt-auto p-3">
         <button
           className="bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
           onClick={(e) => {
