@@ -8,6 +8,8 @@ import FavoritesItem from '../components/FavoritesItem';
 type Favorites ={
     poster_path:string,
     title:string,
+    _id:string
+    
 
 }
 
@@ -39,6 +41,22 @@ const Favorites = () => {
     },[user])
 
 
+    const deleteFavorites = async(itemId:string)=>{ 
+      try {
+        const response = await axios.delete("http://localhost:5000/api/movie/deletefavorites",{
+          params:{
+            userId:user?.id,
+          itemId
+          }
+
+        })
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+
+
   return (
     <div className="w-full h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
       {/* Header Section */}
@@ -55,7 +73,10 @@ const Favorites = () => {
            favorites.map((item,index)=>(
             <FavoritesItem  key={index}
             poster_path={item.poster_path}
-            title={item.title} />
+            title={item.title}
+            _id={item._id}
+            deleteFavorites={deleteFavorites}
+            />
            ))
          }
 
