@@ -43,7 +43,11 @@ JWT_SECRET=your_jwt_secret
 PORT=5000
 ```
 
-### 4. Start the Project
+### 4. Set Up Token.ts for TheMovieDB API and TOKEN
+
+In the token.ts file, you need to replace the token and API key with the ones you obtained from The Movie Database (TMDb).
+
+### 5. Start the Project
 
 Start Backend:
 
