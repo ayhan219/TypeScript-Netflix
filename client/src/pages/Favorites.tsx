@@ -52,7 +52,9 @@ const Favorites = () => {
           }
 
         })
-        console.log(response.data);
+        if(response.status===200){
+          window.location.reload();
+        }
         
       } catch (error) {
         console.log(error);
