@@ -61,7 +61,7 @@ const UpCommingMovies = () => {
               <FaArrowCircleLeft className="text-white text-3xl" />
             </div>
     
-            <div ref={scrollRef}  className="flex gap-4 overflow-x-hidden">
+            <div ref={scrollRef}  className="flex gap-4 overflow-x-hidden h-full">
               {
                 upComming.map((item,index)=>(
                     <div className="flex-shrink-0" key={index}> 
