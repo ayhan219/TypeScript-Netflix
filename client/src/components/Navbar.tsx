@@ -104,7 +104,7 @@ const Navbar = (props: Props) => {
         {/* Icons (Responsive) */}
         {!isSmallScreen ? (
           <>
-            <FaSearch className="cursor-pointer hover:text-gray-400 text-lg" />
+            <FaSearch onClick={()=>setOpenSearch(!openSearch)} className="cursor-pointer hover:text-gray-400 text-lg" />
             <FaBell className="cursor-pointer hover:text-gray-400 text-lg" />
             <div className="relative flex items-center gap-1 cursor-pointer">
               <img
