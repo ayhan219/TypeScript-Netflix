@@ -44,42 +44,43 @@ const TvShowsPageSingle: React.FC<TvShowsProps> = ({
 
   return (
     <div
-      onClick={() => findId && findId(id)}
-      className="w-72 h-96 border-2 border-gray-800 hover:scale-105 duration-200 ease-in-out cursor-pointer rounded-lg bg-gray-900"
-      aria-label={`View details for ${name}`}
+  onClick={() => findId && findId(id)}
+  className="w-72 h-96 border-2 border-gray-800 hover:scale-105 duration-200 ease-in-out cursor-pointer rounded-lg bg-gray-900 flex flex-col"
+  aria-label={`View details for ${name}`}
+>
+  {/* Image Section */}
+  <div>
+    <img
+      className="w-full h-52 object-center object-cover rounded-t-lg"
+      src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+      alt={name}
+      onError={handleImageError}
+    />
+  </div>
+
+  {/* TV Show Details */}
+  <div className="w-full text-base font-semibold text-white p-3 flex-grow">
+    <TvShowDetail label="Name:" value={name} />
+    <TvShowDetail
+      label="IMDB:"
+      value={vote_average ? vote_average.toFixed(1) : "N/A"}
+    />
+  </div>
+
+  {/* Action Button */}
+  <div className="text-white text-center mt-auto p-3">
+    <button
+      className="bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      onClick={(e) => {
+        e.stopPropagation(); // Prevent triggering the parent div's onClick
+        addFavorites(); // Call the function to add to favorites
+      }}
     >
-      {/* Image Section */}
-      <div>
-        <img
-          className="w-full h-52 object-center object-cover rounded-t-lg"
-          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-          alt={name}
-          onError={handleImageError}
-        />
-      </div>
+      {buttonText}
+    </button>
+  </div>
+</div>
 
-      {/* TV Show Details */}
-      <div className="w-full h-auto text-base font-semibold text-white p-3">
-        <TvShowDetail label="Name:" value={name} />
-        <TvShowDetail
-          label="IMDB:"
-          value={vote_average ? vote_average.toFixed(1) : "N/A"}
-        />
-      </div>
-
-      {/* Action Button */}
-      <div className="text-white text-center mt-2">
-        <button
-          className="bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent triggering the parent div's onClick
-            addFavorites(); // Call the function to add to favorites
-          }}
-        >
-          {buttonText}
-        </button>
-      </div>
-    </div>
   );
 };
 
