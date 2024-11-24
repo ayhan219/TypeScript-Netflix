@@ -42,6 +42,8 @@ const Favorites = () => {
 
 
     const deleteFavorites = async(itemId:string)=>{ 
+      console.log(itemId);
+      
       try {
         const response = await axios.delete("http://localhost:5000/api/movie/deletefavorites",{
           params:{
@@ -50,6 +52,8 @@ const Favorites = () => {
           }
 
         })
+        console.log(response.data);
+        
       } catch (error) {
         console.log(error);
         

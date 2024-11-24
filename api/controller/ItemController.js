@@ -48,7 +48,7 @@ const getFavorites = async(req,res)=>{
 
 const deleteFavorites = async(req,res)=>{
 
-const {userId,itemId} = req.body;
+const {userId,itemId} = req.query;
 
 try {
     
@@ -60,8 +60,7 @@ try {
     if(!findUser){
         return res.status(400).json({message:"user not found"})
     }
-    const newFavorites = findUser.favorites.filter((item)=>item.id!==itemId);
-    findUser.favorites = newFavorites;
+    findUser.favorites = findUser.favorites.filter((item) => item._id.toString() !== itemId);
     
     await findUser.save();
     
