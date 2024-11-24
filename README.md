@@ -121,6 +121,8 @@ bcrypt for hashing user passwords before storing them in the database.
 
 The app communicates with The Movie Database (TMDb) API to fetch movies and TV shows.
 Supports various endpoints to retrieve trending content, search results, and detailed information about selected movies or series.
+<br>
+<br>
 ## Key Highlights
 ### Security First:
 Passwords are encrypted using bcrypt, and JWT tokens are securely stored in HTTP-only cookies, minimizing vulnerabilities.
@@ -131,6 +133,7 @@ Users can personalize their experience by adding or removing items from their fa
 ### Clean and Modular Codebase:
 The project is designed with a focus on maintainability, using a well-structured folder hierarchy for both frontend and backend components.
 
+<br>
 
 ## Project Image
 
