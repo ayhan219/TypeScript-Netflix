@@ -3,6 +3,7 @@ import PopularMovieSingle from "./PopularMovieSingle";
 import axios from "axios";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import token from "../token"
+import NowPlayingSingle from './NowPlayingSingle';
 
 
 type Item = {
@@ -49,11 +50,11 @@ const NowPlayingMovies = () => {
         }
       };
     return (
-        <div className="w-full h-[50vh] bg-black flex flex-col items-center pt-16">
+        <div className="w-full h-[60vh] bg-black flex flex-col items-center pt-16">
           <div className="w-full h-auto p-8 pl-24 text-white">
             <h2 className="text-2xl font-bold">Now Playing</h2>
           </div>
-          <div className="relative w-[90%] h-80 flex items-center overflow-hidden">
+          <div className="relative w-[90%] h-[38rem] flex items-center overflow-hidden">
             <div
               className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
               onClick={scrollLeft}
@@ -61,11 +62,11 @@ const NowPlayingMovies = () => {
               <FaArrowCircleLeft className="text-white text-3xl" />
             </div>
     
-            <div ref={scrollRef}  className="flex gap-4 overflow-x-hidden">
+            <div ref={scrollRef}  className="flex gap-4 overflow-x-hidden h-full">
               {
                 nowPlaying.map((item,index)=>(
-                    <div className="flex-shrink-0" key={index}> 
-                    <PopularMovieSingle item={item} index={index} />
+                    <div className="flex-shrink-0 h-full" key={index}> 
+                    <NowPlayingSingle item={item} index={index} />
                   </div>
                 ))
               }
