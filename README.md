@@ -1,6 +1,6 @@
 ## Project Description
 
-his project is a Netflix clone built using modern technologies. The frontend is developed in React with TypeScript for type safety and improved code structure. The backend is implemented using Node.js, Express.js, and MongoDB as the database.
+This project is a Netflix clone built using modern technologies. The frontend is developed in React with TypeScript for type safety and improved code structure. The backend is implemented using Node.js, Express.js, and MongoDB as the database.
 
 The application fetches movie data dynamically from The Movie Database (TMDb) API, ensuring a rich collection of films and series. Users can browse through various categories and enjoy a seamless experience with an interface inspired by Netflix. The backend handles API requests, data storage, and user interactions efficiently.
 
