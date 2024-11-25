@@ -62,7 +62,7 @@ cd client
 npm start
 ```
 
-## Features  
+
 - **Dynamic Movie Data**: Fetches movies and TV shows from **TMDb API**.  
 - **Modern UI**: Netflix-inspired user interface for an immersive experience.  
 - **User Authentication**: Secure login and signup functionality using JWT.  
