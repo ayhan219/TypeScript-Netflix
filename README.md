@@ -139,7 +139,7 @@ The project is designed with a focus on maintainability, using a well-structured
 
 <br>
 
-## Project Image
+## Project Images
 
 ### Home Page
 ![image](https://github.com/user-attachments/assets/941e7326-698f-447d-a874-f0358dc61210)
